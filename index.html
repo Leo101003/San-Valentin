@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>San Valentín</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: pink;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            color: white;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .question {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .question img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+        }
+
+        .options {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .options button {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: none;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .options button.yes {
+            background-color: green;
+            color: white;
+        }
+
+        .options button.no {
+            background-color: red;
+            color: white;
+        }
+
+        .final {
+            display: none;
+            text-align: center;
+            font-size: 48px;
+            font-weight: bold;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Quieres ser mi San Valentín?</h1>
+    <div class="container">
+        <div class="question">
+            <img src="img1.jpg" alt="Imagen 1">
+        </div>
+        <div class="options">
+            <button class="yes">Sí</button>
+            <button class="no">No</button>
+        </div>
+        <div class="final">
+            SABIA QUE QUERIAS TE ADOROOO NOS VEMOS
+        </div>
+    </div>
+    <script>
+        // Variables
+        var yes = document.querySelector(".yes");
+        var no = document.querySelector(".no");
+        var h1 = document.querySelector("h1");
+        var question = document.querySelector(".question img");
+        var final = document.querySelector(".final");
+
+        // Arreglo de preguntas
+        var questions = [
+            "Estás segura?",
+            "Es esa tu decisión final?",
+            "Deberías pensarlo mejor",
+            "Tómate tu tiempo, las decisiones difíciles requieren voluntades fuertes",
+            "El futuro está en tus manos tómalo con calma",
+            "No creo que quieras eso realmente",
+            "Considéralo mejor por favor",
+            "Te noto un poco dudosa, elije de nuevo",
+            "Lo juras por Kuromi?",
+            "Lo juras por los pandas que tanto te gustan?",
+            "Si le das al botón de no, no me quieres",
+            "IHHHH NO ME QUIERES?",
+            "Yo se que me quieres, dale a Sí"
+        ];
+
+        // Arreglo de imágenes
+        var images = [
+            "kuomi.jpg",
+            "img3.jpg",
+            "img4.jpg",
+            "img5.jpg",
+            "img6.jpg",
+            "img7.jpg",
+            "img8.jpg",
+            "img9.jpg",
+            "img10.jpg",
+            "img11.jpg",
+            "img12.jpg",
+            "img13.jpg",
+            "img14.jpg"
+        ];
+
+        // Contador de preguntas
+        var count = 0;
+
+        // Función para aumentar el tamaño del botón de sí
+        function increaseYes() {
+            var width = yes.offsetWidth;
+            var height = yes.offsetHeight;
+            width += 10;
+            height += 10;
+            yes.style.width = width + "px";
+            yes.style.height = height + "px";
+        }
+
+        // Función para disminuir el tamaño del botón de no
+        function decreaseNo() {
+            var width = no.offsetWidth;
+            var height = no.offsetHeight;
+            width -= 10;
+            height -= 10;
+            no.style.width = width + "px";
+            no.style.height = height + "px";
+        }
+
+        // Función para cambiar la pregunta y la imagen
+        function changeQuestion() {
+            count++;
+            if (count < questions.length) {
+                h1.textContent = questions[count];
+                question.src = images[count];
+            } else {
+                h1.style.display = "none";
+                question.style.display = "none";
+                yes.style.display = "none";
+                no.style.display = "none";
+                final.style.display = "block";
+            }
+        }
+
+        // Evento para el botón de sí
+        yes.addEventListener("click", function() {
+            h1.style.display="none";
+            question.style.display="none";
+            yes.style.display="none";
+            no.style.display="none";
+            final.style.display="block";
+        });
+
+        // Evento para el botón de no
+        no.addEventListener("click", function() {
+            increaseYes();
+            decreaseNo();
+            changeQuestion();
+        });
+    </script>
+</body>
+</html>
